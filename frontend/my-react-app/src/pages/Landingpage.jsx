@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Landingpage.css";
@@ -11,9 +10,9 @@ const Landingpage = () => {
   // Check for authentication status and errors on component mount
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const error = params.get('error');
-    
-    if (error === 'authentication_failed') {
+    const error = params.get("error");
+
+    if (error === "authentication_failed") {
       setShowError(true);
       setErrorMessage("Unable to authenticate with GitHub. Please try again.");
       // Clear error from URL
@@ -26,22 +25,22 @@ const Landingpage = () => {
 
   const checkAuthStatus = async () => {
     try {
-      const response = await fetch('http://localhost:3000/auth/status', {
-        credentials: 'include'
+      const response = await fetch("http://localhost:3000/auth/status", {
+        credentials: "include",
       });
       const data = await response.json();
-      
+
       if (data.authenticated) {
-        navigate('/home');
+        navigate("/home");
       }
     } catch (error) {
-      console.error('Error checking auth status:', error);
+      console.error("Error checking auth status:", error);
     }
   };
 
   const handleGitHubLogin = () => {
     // Redirect to backend GitHub OAuth route
-    window.location.href = 'http://localhost:3000/auth/github';
+    window.location.href = "http://localhost:3000/auth/github";
   };
 
   const closeErrorPopup = () => {
@@ -408,7 +407,10 @@ const Landingpage = () => {
                 developers.
               </p>
               <div className="social-links">
-                <a href="#" className="social-link">
+                <a
+                  href="https://github.com/Sahilchandel06/MYProject"
+                  className="social-link"
+                >
                   GitHub
                 </a>
               </div>
